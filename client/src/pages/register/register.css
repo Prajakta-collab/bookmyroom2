@@ -1,0 +1,56 @@
+.register{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #003580;
+}
+
+
+.registerContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 250px;
+
+    padding:70px;
+    border: 1px solid black;
+
+    background-color:lightgray;
+
+    border-radius: 5px;
+    border-color: darkgray;
+    
+}
+
+.rInput{
+    height: 30px;
+  padding: 10px;
+  border:none;
+  border-radius: 5px;
+}
+.registerTitle{
+    justify-self: center;
+}
+.rButton {
+    border: none;
+    padding: 10px 20px;
+    background-color:#febb02;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .rButton:disabled{
+    background-color: #0071c28c;
+    cursor: not-allowed;
+  }
+  
+  .checkAdmin{
+    margin-top: 10px;
+    display:flex;
+    flex-direction: row;
+    gap:10px;
+  }

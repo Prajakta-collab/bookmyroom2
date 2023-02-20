@@ -3,25 +3,32 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user,dispatch } = useContext(AuthContext);
 const navigate=useNavigate();
 
-  const handlelogin=()=>{
+  const handlelogout=async(e)=>{
+
+    e.preventDefault();
+    
+      dispatch({ type: "LOGOUT" });
+  
       navigate("/login");
+    
+    
   }
   return (
     
     <div className="navbar">
       <div className="navContainer">
-        <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
+        <Link to="/home" style={{ color: "inherit", textDecoration: "none" }}>
           <span className="logo">BookMyRoom</span>
         </Link>
-        {user ? user.username : (
+        
           <div className="navItems">
-            <button className="navButton">Register</button>
-            <button className="navButton" onClick={handlelogin}>Login</button>
+            <span>{user.username}</span>
+            <button className="navButton" onClick={handlelogout}>Logout</button>
           </div>
-        )}
+        
       </div>
     </div>
   );

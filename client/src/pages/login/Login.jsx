@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 
@@ -24,16 +25,23 @@ const Login = () => {
     try {
       const res = await axios.post("/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      navigate("/")
+      navigate("/home")
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
 
+  const handleRegister=(e)=>{
+    e.preventDefault();
+
+    navigate("/register");
+  }
 
   return (
     <div className="login">
+  
       <div className="lContainer">
+      <h1>Login</h1>
         <input
           type="text"
           placeholder="username"
@@ -51,6 +59,10 @@ const Login = () => {
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
+
+      <button  onClick={handleRegister} className="lButton">
+        Register
+      </button>
         {error && <span>{error.message}</span>}
       </div>
     </div>
