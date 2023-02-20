@@ -46,7 +46,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT=process.env.PORT;
+const PORT=process.env.PORT ||8800;
 
 app.listen(PORT, () => {
   connect();
