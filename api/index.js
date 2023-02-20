@@ -35,6 +35,7 @@ app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
 
 app.use((err, req, res, next) => {
+
   const errorStatus = err.status || 500;
   const errorMessage = err.message || "Something went wrong!";
   return res.status(errorStatus).json({
@@ -45,7 +46,9 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8800, () => {
+const PORT=process.env.PORT;
+
+app.listen(PORT, () => {
   connect();
   console.log("Connected to backend.");
 });
